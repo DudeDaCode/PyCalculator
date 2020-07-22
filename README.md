@@ -1,9 +1,9 @@
 # PyCalculator
 
-*DESCRIPTION*
+**DESCRIPTION**
 
 A Simple GUI Calculator Made Using tkinter And Python.
 
-*REQUIREMENTS*
+**REQUIREMENTS**
 
 Python (Tested On 3.6)
