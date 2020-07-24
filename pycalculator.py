@@ -7,20 +7,20 @@ var = {'front':[], 'back':[], 'decimal':False, 'x_val':0.0, 'y_val':0.0, 'result
 
 root = tk.Tk()
 root.title('PyCalculator')
-root.config(bg='#9a9a9a')
+root.config(bg='#F1EABC')
 
 display_text = tk.StringVar()
 display_text.set('0.0000')
 
-canvas = tk.Canvas(bg='#9a9a9a', bd=0, highlightthickness=0)
+canvas = tk.Canvas(bg='#F1EABC', bd=0, highlightthickness=0)
 canvas.pack(padx=15, pady=15)
 
 def std_btn(text, bg, row, col, width=7, height=2, font=('Franklin Gothic Book', 24)):
     btn = tk.Button(canvas, text=text, bg=bg, width=width, height=height, font=font, command=lambda: event_click(text))
     return btn.grid(row=row, column=col, padx=4, pady=4)
 
-tk.Label(canvas, text='PyCalculator', anchor='e', bg='#9a9a9a', fg='white', font=('Franklin Gothic Book', 14, 'bold')).grid(row=0, columnspan=4, sticky='ew', padx=4, pady=2)
-tk.Label(canvas, textvariable=display_text, anchor='e', bg='black', fg='#ffffe0', font=('Cuadra',47)).grid(row=1, columnspan=4, sticky='ew', padx=4, pady=2) #NOTICE YOU NEED THE CUADRA BOLD FONT FOR THIS TO WORK, IF NOT, REPLACE THE VARIABLE STRING WITH ANY INBUILT SYSTEM FONT LIKE VERDANA
+tk.Label(canvas, text='PyCalculator', anchor='e', bg='#F1EABC', fg='white', font=('Franklin Gothic Book', 14, 'bold')).grid(row=0, columnspan=4, sticky='ew', padx=4, pady=2)
+tk.Label(canvas, textvariable=display_text, anchor='e', bg='#F1EABC', fg='#ffffe0', font=('Cuadra',47)).grid(row=1, columnspan=4, sticky='ew', padx=4, pady=2) #NOTICE YOU NEED THE CUADRA BOLD FONT FOR THIS TO WORK
 std_btn("C", TAN, 2, 0),   std_btn("CE", TAN, 2, 1),  std_btn("%", TAN, 2, 2),   std_btn("/", TAN, 2, 3)
 std_btn("7", WHITE, 3, 0), std_btn("8", WHITE, 3, 1), std_btn("9", WHITE, 3, 2), std_btn("*", TAN, 3, 3)
 std_btn("4", WHITE, 4, 0), std_btn("5", WHITE, 4, 1), std_btn("6", WHITE, 4, 2), std_btn("-", TAN, 4, 3)
@@ -49,6 +49,8 @@ def event_click(event):
         update_display(var['result'] / 100.0)
     if event == '=':
         calculate_click()
+    if event == 'r':
+        reset(self)
 
 # helper functions
 def update_display(display_value):
@@ -92,6 +94,13 @@ def operator_click(event):
     except:
         var['x_val'] = var['result']
     clear_click()
+
+def reset(self):
+        self.state = READY
+        self.stack = [0]
+        self.last_operation = None
+        self.current_op = None
+        self.display()
 
 def calculate_click():
     ''' attempt to perform operation on x and y variables if exist '''
