@@ -20,7 +20,7 @@ def std_btn(text, bg, row, col, width=7, height=2, font=('Franklin Gothic Book',
     return btn.grid(row=row, column=col, padx=4, pady=4)
 
 tk.Label(canvas, text='PyCalculator', anchor='e', bg='#F1EABC', fg='white', font=('Franklin Gothic Book', 14, 'bold')).grid(row=0, columnspan=4, sticky='ew', padx=4, pady=2)
-tk.Label(canvas, textvariable=display_text, anchor='e', bg='#F1EABC', fg='#ffffe0', font=('Cuadra',47)).grid(row=1, columnspan=4, sticky='ew', padx=4, pady=2) #NOTICE YOU NEED THE CUADRA BOLD FONT FOR THIS TO WORK
+tk.Label(canvas, textvariable=display_text, anchor='e', bg='#F1EABC', fg='#ffffe0', font=('Cuadra',47)).grid(row=1, columnspan=4, sticky='ew', padx=4, pady=2)
 std_btn("C", TAN, 2, 0),   std_btn("CE", TAN, 2, 1),  std_btn("%", TAN, 2, 2),   std_btn("/", TAN, 2, 3)
 std_btn("7", WHITE, 3, 0), std_btn("8", WHITE, 3, 1), std_btn("9", WHITE, 3, 2), std_btn("*", TAN, 3, 3)
 std_btn("4", WHITE, 4, 0), std_btn("5", WHITE, 4, 1), std_btn("6", WHITE, 4, 2), std_btn("-", TAN, 4, 3)
